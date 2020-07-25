@@ -1,0 +1,62 @@
+NUM_GPUS: 4
+
+TRAIN:
+  MODEL: anynet
+  IM_SIZE: 224
+  BATCH_SIZE: 32
+
+#--------------------------------
+DATASET:
+  PATH: '/home/yodchanan/dream/datasets/CIFAR-10'
+  NAME: cifar10
+  SHUFFLE: true
+  INPUT_FILTER: 3
+  N_CLASSES: 10
+  
+
+
+#--------------------------------
+  
+
+OPTIM:
+    BASE_LR: 0.01
+    LR_POLICY: cos
+    MAX_EPOCH: 1
+    BURNIN: 0
+    WARMUP_FACTOR: 0.1
+    
+    SGD:
+        MOMENTUM: 0.9
+        NESTEROV: true
+        DAMPENING: 0.0
+        WEIGHT_DECAY: 0.0001
+
+
+#--------------------------------
+
+WANDB:
+  PROJECT: ANYNET_cifar10_test
+  NAME: 'default_name'
+
+#--------------------------------
+
+MEM:
+  RELU_INPLACE: true
+
+BN:
+  EPS: 0.00001
+  MOMENTUM: 0.1
+
+#==============  MODEL ===============
+
+ANYNET:
+  STEM_OUT: 6
+  STAGE_LIMIT_MIN: 1
+  STAGE_LIMIT_MAX: 1
+  DEPTH_LIMIT: 4
+  WIDTH_LIMIT: 4
+  B_RATIO_LIMIT: [1,2,4]
+  BIAS: false
+
+#=====================================
+RANDOM_SEED: 1
